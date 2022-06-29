@@ -13,7 +13,7 @@ export default class NewsApiService {
         } catch (err) {
             console.log(err);
         }
-}
+    };
 
     resetPage() {
         this.page = 1;
