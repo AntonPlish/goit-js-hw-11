@@ -36,7 +36,7 @@ function onSearch(e) {
 function onLoadMore() {
     newsApiService.fetchArticles().then(data => {
         buildCards(data.hits);
-        if (data.totalHits > 0 && data.hits.length === 0) {
+        if (data.hits.length === 0) {
             Notiflix.Notify.failure(`<h2>We're sorry, but you've reached the end of search results.</h2>`)
             refs.loadMoreBtn.style.visibility = 'hidden';
         };
