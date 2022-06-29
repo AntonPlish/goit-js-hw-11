@@ -34,8 +34,10 @@ function onSearch(e) {
 };
 
 function onLoadMore() {
+    refs.loadMoreBtn.style.visibility = 'hidden';
     newsApiService.fetchArticles().then(data => {
         buildCards(data.hits);
+        refs.loadMoreBtn.style.visibility = 'visible';
         if (data.hits.length === 0) {
             Notiflix.Notify.failure(`<h2>We're sorry, but you've reached the end of search results.</h2>`)
             refs.loadMoreBtn.style.visibility = 'hidden';
@@ -89,3 +91,18 @@ async function buildCards(hits) {
 function clearArticlesContainer() {
     refs.articlesContainer.innerHTML = '';
 };
+
+// ------------------------------------------ scroll ----------------------------------------------------
+
+            // const options = {
+            //     rootMargin: "0px",
+            //     threshold: 1.0,
+            // };
+            // const observer = new IntersectionObserver((entries) => {
+            //     entries.forEach(entry => {
+            //         if (entry.isIntersecting) {
+            //             onLoadMore();
+            //         };
+            //     });
+            // }, options);
+            // observer.observe(document.querySelector('.label'));
